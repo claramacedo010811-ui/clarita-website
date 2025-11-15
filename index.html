@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clarita — vibes & things ✨</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#FFF8F6;
+      --card:#fff;
+      --accent1:#FFB6C1;   /* pastel pink */
+      --accent2:#FFDDAA;   /* cream peach */
+      --muted:#6B6B6B;
+      --glass: rgba(255,255,255,0.7);
+      --shadow: 0 6px 18px rgba(0,0,0,0.08);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#FFF8F6 0%, #FFF3EE 100%);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:60px;
+    }
+
+    /* Header / Nav */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:12px 20px;
+      box-shadow:var(--shadow);
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none; color:inherit;
+    }
+    .logo{
+      width:48px; height:48px; border-radius:12px;
+      background: conic-gradient(from 180deg at 50% 50%, var(--accent1), var(--accent2), #F8E1FF);
+      display:flex; align-items:center; justify-content:center;
+      font-family: "Pacifico"; font-size:20px; color:#60304d;
+      box-shadow: 0 6px 20px rgba(240,120,160,0.12);
+    }
+    nav{margin-left:auto; display:flex; gap:10px; align-items:center}
+    nav a{padding:8px 12px; border-radius:10px; text-decoration:none; color:#503040; font-weight:600; font-size:14px;}
+    nav a:hover{background:rgba(255,180,193,0.14)}
+
+    /* Hero */
+    .container{max-width:980px; margin:28px auto; padding:0 20px;}
+    .hero{
+      display:grid; grid-template-columns: 1fr 320px; gap:22px; align-items:center;
+    }
+    .hero-card{
+      background: linear-gradient(180deg, var(--card), #fff);
+      border-radius: var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+    .name{
+      font-family:"Pacifico"; font-size:34px; margin:0 0 6px; color:#5b2740;
+    }
+    .role{font-weight:700; color:#7a4b59; font-size:14px; text-transform:uppercase; letter-spacing:1px}
+    .bio{color:var(--muted); margin-top:10px}
+    .actions{display:flex; gap:12px; margin-top:16px}
+    .btn{
+      padding:9px 14px; border-radius:12px; font-weight:700; font-size:13px;
+      border:none; cursor:pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    .btn-pink{ background:linear-gradient(90deg,var(--accent1), #ff9fb8); color:#5b2b3b; }
+    .btn-ghost{ background:transparent; border:1px solid rgba(90,40,60,0.08); color:#5b2b3b; }
+
+    /* mini stats */
+    .stats{display:flex; gap:12px; margin-top:18px}
+    .stat{background:var(--glass); padding:10px 12px; border-radius:12px; text-align:center; min-width:90px}
+    .stat .num{font-weight:800; color:#6f2540}
+    .stat .label{font-size:12px; color:var(--muted)}
+
+    /* right column */
+    .avatar{
+      width:100%; height:100%; min-height:220px;
+      border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center;
+      background: linear-gradient(135deg,#fff2f5,#fff9f1);
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 10px 30px rgba(245,120,160,0.06);
+    }
+    .avatar svg{width:140px; height:140px; opacity:0.95}
+
+    /* Sections */
+    section{margin-top:22px}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .card{background:var(--card); padding:16px; border-radius:12px; box-shadow:var(--shadow)}
+    h2{margin:0 0 12px; font-size:18px; color:#5b2740}
+
+    /* Music */
+    .playlist{display:flex; flex-direction:column; gap:10px}
+    .track{display:flex; align-items:center; gap:12px}
+    .cover{
+      width:64px; height:64px; border-radius:10px; flex-shrink:0;
+      background: linear-gradient(135deg,#ffe6ee,#fff0db);
+      display:flex; align-items:center; justify-content:center; font-weight:700; color:#6a2b44;
+      box-shadow:0 6px 18px rgba(200,80,120,0.06);
+    }
+    .track .meta{flex:1}
+    .track .meta .title{font-weight:700}
+    .track .meta .artist{font-size:13px; color:var(--muted)}
+    .play-btn{padding:8px 10px; border-radius:10px; background:linear-gradient(90deg,#ffd6e0,#ffe6c8); border:none; cursor:pointer; font-weight:700}
+
+    /* gallery */
+    .gallery{display:grid; grid-template-columns: repeat(3,1fr); gap:10px}
+    .tile{
+      height:110px; border-radius:10px; overflow:hidden; position:relative;
+      background: linear-gradient(135deg,#fff0f6,#fffaf0);
+      display:flex; align-items:center; justify-content:center;
+      color:#5b2740; font-weight:700; font-size:14px;
+    }
+
+    /* list */
+    ul.plain{list-style:none; margin:0; padding:0}
+    ul.plain li{padding:8px 0; border-bottom:1px dashed rgba(0,0,0,0.04); color:var(--muted)}
+
+    /* contact form */
+    form{display:flex; flex-direction:column; gap:10px}
+    input[type=text], input[type=email], textarea{
+      padding:10px 12px; border-radius:10px; border:1px solid rgba(0,0,0,0.06);
+      font-size:14px; outline:none;
+    }
+    textarea{min-height:100px; resize:vertical}
+    .note{font-size:13px; color:var(--muted)}
+
+    footer{margin-top:30px; text-align:center; color:var(--muted); font-size:13px}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns: repeat(2,1fr)}
+      .gallery{grid-template-columns: repeat(2,1fr)}
+    }
+    @media (max-width:560px){
+      nav{display:none}
+      .grid-3{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .avatar{min-height:160px}
+    }
+
+    /* fun lil bounce */
+    .pulse{animation: pulse 2.2s infinite}
+    @keyframes pulse{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-4px)}
+      100%{transform:translateY(0)}
+    }
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    a.link{color:#6b2740; font-weight:700; text-decoration:none}
+    .chip{display:inline-block; padding:6px 10px; border-radius:999px; background:linear-gradient(90deg,#fff2f7,#fff8e9); font-weight:700; font-size:13px;}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#top" aria-label="Clarita home">
+      <div class="logo">C</div>
+      <div>
+        <div style="font-weight:800;color:#6b2740">Clarita</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">indie-pop • volleyball • binge watcher</div>
+      </div>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#music">Music</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#tv">TV & Faves</a>
+      <a href="#volley">Volleyball</a>
+      <a href="#contact" class="chip">Say hi 💌</a>
+    </nav>
+  </header>
+
+  <main class="container" id="top">
+    <section class="hero">
+      <div class="hero-card">
+        <h1 class="name">Hi — I'm Clarita ✨</h1>
+        <div class="role">13 y/o • Volleyball player • Swiftie & binger</div>
+        <p class="bio">
+          I love Taylor, Olivia, Sabrina and Gracie — also obsessed with Grey's Anatomy, Modern Family and Brooklyn Nine-Nine. This page is a little moodboard of my fav things, a playlist, photos, and my volleyball stats (obviously). Welcome!
+        </p>
+
+        <div class="actions">
+          <button class="btn btn-pink" onclick="document.querySelector('#music').scrollIntoView({behavior:'smooth'})">Play my vibes ▶</button>
+          <button class="btn btn-ghost" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+        </div>
+
+        <div class="stats" aria-hidden="false" style="margin-top:18px">
+          <div class="stat">
+            <div class="num">13</div>
+            <div class="label">Years young</div>
+          </div>
+          <div class="stat">
+            <div class="num">Volleyball</div>
+            <div class="label">position: outside hitter</div>
+          </div>
+          <div class="stat">
+            <div class="num">100%</div>
+            <div class="label">Swiftie energy</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="avatar" aria-hidden="true">
+        <!-- cute svg avatar -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#ffe6ef"/>
+              <stop offset="1" stop-color="#fff2d8"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" rx="18" fill="url(#g1)"/>
+          <g transform="translate(20,20)" fill="#6b2740" opacity="0.95">
+            <circle cx="60" cy="40" r="26
